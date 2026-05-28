@@ -1,0 +1,30 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "bailian-coding-plan": {
+      "npm": "@ai-sdk/anthropic",
+      "name": "阿里云百炼 Coding Plan",
+      "options": {
+        "baseURL": "https://coding.dashscope.aliyuncs.com/apps/anthropic/v1",
+        "apiKey": "{env:BAILIAN_CODING_PLAN_API_KEY}"
+      },
+      "models": {
+        "qwen3-coder-plus": {
+          "name": "Qwen3 Coder Plus"
+        },
+        "qwen3-coder-next": {
+          "name": "Qwen3 Coder Next"
+        },
+        "qwen3.6-plus": {
+          "name": "Qwen3.6 Plus"
+        }
+      }
+    }
+  },
+  "model": "bailian-coding-plan/qwen3-coder-plus",
+  "share": "disabled",
+  "permission": {
+    "edit": "ask",
+    "bash": "ask"
+  }
+}

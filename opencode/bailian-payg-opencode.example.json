@@ -1,0 +1,34 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "bailian-payg": {
+      "npm": "@ai-sdk/anthropic",
+      "name": "阿里云百炼（学生权益按量）",
+      "options": {
+        "baseURL": "https://dashscope.aliyuncs.com/apps/anthropic/v1",
+        "apiKey": "{env:DASHSCOPE_API_KEY}"
+      },
+      "models": {
+        "qwen3.6-plus": {
+          "name": "Qwen3.6 Plus",
+          "options": {
+            "thinking": {
+              "type": "enabled",
+              "budgetTokens": 2048
+            }
+          }
+        },
+        "deepseek-v3.2": {
+          "name": "DeepSeek V3.2"
+        }
+      }
+    }
+  },
+  "model": "bailian-payg/qwen3.6-plus",
+  "small_model": "bailian-payg/deepseek-v3.2",
+  "share": "disabled",
+  "permission": {
+    "edit": "ask",
+    "bash": "ask"
+  }
+}

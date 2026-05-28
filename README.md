@@ -95,6 +95,10 @@ D. 我不确定，让 AI 判断
 
 [opencode/AGENTS.md](opencode/AGENTS.md)
 
+如果学生想用阿里云学生认证的 300 元权益，在 OpenCode 里接入 Qwen / DeepSeek，看这份傻瓜教程：
+
+[docs/aliyun-qwen-opencode-student-guide.zh-CN.md](docs/aliyun-qwen-opencode-student-guide.zh-CN.md)
+
 ## 仓库结构
 
 ```text
@@ -102,7 +106,9 @@ D. 我不确定，让 AI 判断
 ├── README.md                         中文主入口
 ├── LICENSE                           MIT 开源协议
 ├── docs/
-│   └── CLASS-AI-framework.zh-CN.md   完整中文框架说明
+│   ├── CLASS-AI-framework.zh-CN.md   完整中文框架说明
+│   └── aliyun-qwen-opencode-student-guide.zh-CN.md
+│                                      阿里云学生权益 + OpenCode 教程
 ├── pack/                             给老师/学生直接用的傻瓜式流程包
 │   ├── START_HERE_先看这个.md
 │   ├── 傻瓜式课堂实验向导.md
@@ -114,7 +120,9 @@ D. 我不确定，让 AI 判断
 │   └── system-prompt.md              Trae 专用中文系统提示词
 ├── opencode/
 │   ├── AGENTS.md
-│   └── small-model-system-prompt.md  小模型/免费模型短提示词
+│   ├── small-model-system-prompt.md  小模型/免费模型短提示词
+│   ├── bailian-payg-opencode.example.json
+│   └── bailian-coding-plan-opencode.example.json
 ├── examples/
 │   └── windows-gdi-paint-lab.md      Windows GDI 画图实验示例
 └── skills/
