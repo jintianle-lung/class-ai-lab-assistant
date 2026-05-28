@@ -1,53 +1,57 @@
-# Example: Windows GDI Paint Lab
+# 示例：Windows GDI 画图实验
 
-## Input
+这个例子展示如何把一节 Windows 程序设计课变成 AI 辅助实验。
+
+## 课堂输入
 
 ```text
-Course: Windows Programming
-Topic: MFC document-view and GDI drawing
-Teacher points:
-1. Document stores data, view displays data.
-2. GDI draws through DC, pen, and brush.
-3. WM_PAINT should redraw the window.
-Task: build a drawing program similar to a reference PaintORama project, but improved.
-Allowed: C++, Win32, MFC, GDI.
-Avoid: Qt, Direct2D, OpenGL, web frontend.
+课程：Windows 程序设计
+主题：MFC 文档-视图结构与 GDI 绘图
+老师强调：
+1. 文档保存数据，视图负责显示
+2. GDI 通过 DC、画笔、画刷绘图
+3. WM_PAINT 负责窗口正确重绘
+任务：参考 PaintORama 做一个类似但有改进的画图程序
+允许：C++、Win32、MFC、GDI
+避免：Qt、Direct2D、OpenGL、Web 前端
 ```
 
-## Knowledge Map
+## 知识点映射
 
-| Lecture concept | Code/API | Visible behavior | Student explanation |
+| 课堂知识点 | 代码/API | 程序表现 | 学生讲法 |
 |---|---|---|---|
-| Program entry | `WinMain` | Opens a window | GUI program starts here |
-| Message handling | `WndProc` | Handles menu/mouse/paint | Windows programs are message-driven |
-| GDI drawing | `HDC`, `HPEN`, `HBRUSH` | Draws lines and shapes | Drawing happens through device context |
-| Mouse messages | `WM_LBUTTONDOWN`, `WM_MOUSEMOVE`, `WM_LBUTTONUP` | Drag to draw | Press starts, move previews, release commits |
-| Correct redraw | `WM_PAINT`, `RenderDocument` | Drawing remains after resize/cover | Redraw from stored data |
-| Document-view idea | `DrawingDocument`, `Stroke` | Stores all shapes | Data is separated from display |
+| 程序入口 | `WinMain` | 打开一个窗口 | GUI 程序从这里启动 |
+| 消息处理 | `WndProc` | 处理菜单、鼠标、绘图 | Windows 程序是消息驱动的 |
+| GDI 绘图 | `HDC`、`HPEN`、`HBRUSH` | 画线和图形 | 绘图通过设备环境完成 |
+| 鼠标消息 | `WM_LBUTTONDOWN`、`WM_MOUSEMOVE`、`WM_LBUTTONUP` | 鼠标拖动画图 | 按下开始，移动预览，松开完成 |
+| 正确重绘 | `WM_PAINT`、`RenderDocument` | 窗口缩放或遮挡后图形还在 | 从保存的数据重新绘制 |
+| 文档-视图思想 | `DrawingDocument`、`Stroke` | 保存所有图形 | 数据和显示分离 |
 
-## Tiny Baseline
+## 最小可运行基线
 
 ```text
-V0: create a window and draw one fixed line in WM_PAINT.
-Verification: run the program and see the line.
+V0：创建窗口，在 WM_PAINT 里画一条固定直线。
+验证：运行程序，窗口里能看到直线。
 ```
 
-## Improvement Ladder
+## 逐步改进路线
 
-| Version | New feature | Concept | Verification |
+| 版本 | 新增功能 | 对应知识点 | 验证方式 |
 |---|---|---|---|
-| V0 | Window + fixed line | `WinMain`, `WM_PAINT`, `HDC` | Window shows line |
-| V1 | Mouse drag line | mouse messages | Drag draws a line |
-| V2 | Store strokes | document data | Multiple strokes remain in memory |
-| V3 | Redraw from strokes | document-view, `WM_PAINT` | Resize window; drawing remains |
-| V4 | Save/export | serialization/files | Reopen data or export BMP |
+| V0 | 窗口 + 固定直线 | `WinMain`、`WM_PAINT`、`HDC` | 窗口显示直线 |
+| V1 | 鼠标拖动画线 | 鼠标消息 | 拖动鼠标能画线 |
+| V2 | 保存每一笔 Stroke | 文档数据 | 多条线能保存在内存里 |
+| V3 | 根据 Stroke 重绘 | 文档-视图、`WM_PAINT` | 缩放窗口后图形不丢 |
+| V4 | 保存/导出 | 文件保存、序列化 | 能重新打开数据或导出图片 |
 
-## Student Defense Script
+## 学生验收讲稿
 
 ```text
-This project demonstrates GDI drawing and document-view thinking.
-Mouse messages create drawing data. The document stores that data as strokes.
-WM_PAINT does not invent new data; it reads the document and redraws all strokes.
-This solves the problem of drawings disappearing after window redraw.
-```
+这个项目展示了 GDI 绘图和文档-视图思想。
 
+鼠标消息负责产生绘图数据。
+DrawingDocument 负责保存这些 Stroke 数据。
+WM_PAINT 不直接产生新图形，而是读取文档数据并重新绘制。
+
+这样可以解决直接画在窗口上导致刷新后图形丢失的问题。
+```
